@@ -1,0 +1,105 @@
+---
+title: Publications
+---
+
+<!-- links the info from data/publications-->
+<% data= YAML.load(File.open(File.join(File.dirname(__FILE__),'data/publications.yml'))) %>
+
+<!--puts publication information into ordered tables-->
+
+<div id="content">
+	<span id="Conference"></span>
+	<h2 class="tableTitle">Conference and Journal Articles</h2>
+	<table>
+		<tr>
+			<th>Author</th>
+			<th>Title</th>
+			<th>Publication</th>
+			<th>Time</th>
+			<th>url</th>
+		</tr>
+		<% data["conference"].each do |paper| %>
+		<tr>
+			<td> <%= paper["author"] %> </td>
+			<td> <b><%= paper["title"] %> </b></td>
+			<td> <i><%= paper["publication"] %> </i></td>
+			<td> <%= paper["time"] %> </td>
+			<td>
+				<% if paper["url"]!=""%>
+					<a href="<%=paper["url"]%>"><%= "paper" %></a>
+				<%end%>
+			</td>
+		</tr>
+		<%end%>
+	</table>
+	<span id="Workshop"></span>
+	<h2 class="tableTitle">Workshop Papers</h2>
+	<table>
+		<tr>
+			<th>Author</th>
+			<th>Title</th>
+			<th>Publication</th>
+			<th>Time</th>
+			<th>url</th>
+		</tr>
+		<% data["workshop"].each do |paper| %>
+		<tr>
+			<td> <%= paper["author"] %> </td>
+			<td> <b><%= paper["title"] %> </b></td>
+			<td> <i><%= paper["publication"] %> </i></td>
+			<td> <%= paper["time"] %> </td>
+			<td>
+				<% if paper["url"]!=""%>
+					<a href="<%=paper["url"]%>"><%= "paper" %></a>
+				<%end%>
+			</td>
+		</tr>
+		<%end%>
+	</table>
+	<span id="Thesis"></span>
+	<h2 class="tableTitle">Thesis</h2>
+	<table>
+		<tr>
+			<th>Type</th>
+			<th>Title</th>
+			<th>Institution</th>
+			<th>Time</th>
+			<th>Advisor</th>
+			<th>url</th>
+		</tr>
+		<% data["thesis"].each do |paper| %>
+		<tr>
+			<td> <%= paper["type"] %> </td>
+			<td> <b><%= paper["title"] %> </b></td>
+			<td> <%= paper["institution"] %> </td>
+			<td> <%= paper["time"] %> </td>
+			<td> <%= paper["advisor"] %> </td>
+			<td>
+				<% if paper["url"]!=""%>
+					<a href="<%=paper["url"]%>"><%= "pdf" %></a>
+				<%end%>
+			</td>
+		</tr>
+		<%end%>
+	</table>
+	<span id="Technical"></span>
+	<h2>Reports</h2>
+	<table>
+		<tr>
+			<th>Author</th>
+			<th>Title</th>
+			<th>Institution</th>
+		</tr>
+		<% data["reports"].each do |paper| %>
+		<tr>
+			<td><%= paper["author"] %></td>
+			<td><b><%= paper["title"] %> </b></td>
+			<td><%= paper["publication"] %> 
+				<% if paper["url"]!=""%>
+					<a href="<%=paper["url"]%>"><%= "pdf" %></a>
+				<%end%>
+			</td>
+		</tr>
+		<%end%>
+	</table>
+</div>

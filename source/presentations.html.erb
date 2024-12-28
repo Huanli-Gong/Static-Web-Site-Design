@@ -1,0 +1,28 @@
+---
+title: Presentations
+---
+
+<!-- this page lists presentations that the lab has done -->
+<% data= YAML.load(File.open(File.join(File.dirname(__FILE__),'data/presentations.yml'))) %>
+<div id="content">
+  <h2>Presentations and Demos</h2>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Url</th>
+    </tr>
+    <% data.each do |pre| %>
+    <tr>
+      <td><b><%= pre["title"] %> </b></td>
+      <td><%= pre["publication"] %></td> 
+      <td>
+      <% if pre["url"]!=""%>
+        <a href="<%=pre["url"]%>"><%= '[slides]' %></a>
+      <%end%>
+      </td>
+    </tr>
+    <%end%>
+  </table>
+</div>
+
